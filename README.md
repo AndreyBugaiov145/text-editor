@@ -1,7 +1,7 @@
 # text-editor
 
 To start the project, you need to run the following commands
-## Pay attention version v16.13.2
+## Pay attention version node v16.13.2
 
 
 ```bash
