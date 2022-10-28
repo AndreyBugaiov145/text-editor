@@ -1,0 +1,36 @@
+.text-editor {
+  border: 2px solid silver;
+}
+
+.editor-buttons {
+  border-bottom: 2px solid silver;
+  background-color: rgba(255, 124, 124, 0.08);
+}
+
+.icon {
+  color: red;
+  height: 24px;
+  width: 24px;
+}
+
+.btn {
+  &:hover {
+    background-color: silver;
+  }
+}
+
+.active {
+  border-radius: 4px;
+  background-color: silver;
+}
+
+.editor {
+  padding: 10px;
+  cursor: text;
+}
+
+.red {
+  background-color: red;
+}
+
+
