@@ -9,7 +9,9 @@
     "watch": "webpack --mode development --watch",
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "stylelint ": "stylelint \"**/*.scss\" --fix"
+    "stylelint": "stylelint \"**/*.scss\" --fix",
+    "prettier-write": "prettier --write \"src/**/*.js\"",
+    "prettier-check": "prettier --check \"src/**/*.js\""
   },
   "keywords": [],
   "author": "bugaiov andrey",
@@ -31,6 +33,7 @@
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
     "optimize-css-assets-webpack-plugin": "^6.0.1",
+    "prettier": "2.8.0",
     "sass": "^1.54.9",
     "sass-loader": "^13.0.2",
     "style-loader": "^3.3.1",
