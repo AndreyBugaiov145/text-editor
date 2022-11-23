@@ -1,4 +1,3 @@
-import RangeUtil from '@/utils/RangeUtil'
 import intersect from '@/utils/intersect'
 
 export default class Editor {
@@ -9,7 +8,8 @@ export default class Editor {
     newNodeId = null
     editor = null
 
-    constructor() {
+    constructor(rangeUtil) {
+        this.rangeUtil = rangeUtil
         this.editor = document.querySelector('.editor')
         if (!this.editor) {
             alert('Error, contact developer!')
@@ -105,7 +105,7 @@ export default class Editor {
                 }
                 attr.push({name: 'href', value: link})
             }
-            return RangeUtil.highlight(
+            return this.rangeUtil.highlight(
                 this.selectedTag,
                 this.selection,
                 '',
@@ -117,10 +117,10 @@ export default class Editor {
     }
 
     highlightSelectedButton() {
-        let allFocusNodeParentNode = RangeUtil.getAllParentNode(
+        let allFocusNodeParentNode = this.rangeUtil.getAllParentNode(
             this.selection.focusNode
         )
-        let allAnchorNodeParentNode = RangeUtil.getAllParentNode(
+        let allAnchorNodeParentNode = this.rangeUtil.getAllParentNode(
             this.selection.anchorNode
         )
         let allGeneralParentNode = intersect(
