@@ -2,23 +2,34 @@ const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const fileName = (ext) => `[name].${ext}`
+const isDev = process.env.NODE_ENV === 'development'
 
-const optomization = () => {
-    return {
+const optimization = () => {
+    const conf = {
         splitChunks: {
             chunks: "all"
         }
     }
+
+    if (!isDev) {
+        conf.minimizer = [
+            new TerserPlugin(),
+            new OptimizeCssAssetsPlugin()
+        ]
+    }
+
+    return conf
 }
 
 const sccLoader = (extra) => {
     const loaders = [
         {
             loader: MiniCssExtractPlugin.loader,
-            options: {
-            },
+            options: {},
         },
         "css-loader",
     ]
@@ -55,11 +66,11 @@ module.exports = {
             '@': path.resolve(__dirname, 'src'),
         }
     },
-    optimization: optomization(),
-    devtool: "source-map" ,
+    optimization: optimization(),
+    devtool: isDev ? "source-map" : 'eval',
     devServer: {
         port: 4200,
-        hot: true,
+        hot: isDev,
         static: {
             directory: path.join(__dirname, 'src'),
         },
@@ -69,7 +80,7 @@ module.exports = {
             title: 'text editor',
             template: "./index.html",
             minify: {
-                collapseWhitespace: false
+                collapseWhitespace: !isDev
             }
         }),
         new CleanWebpackPlugin(),

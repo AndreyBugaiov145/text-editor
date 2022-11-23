@@ -4,9 +4,10 @@
   "description": "",
   "private": true,
   "scripts": {
-    "dev": "webpack --mode development",
+    "dev": "cross-env NODE_ENV=development webpack --mode development",
     "start": "webpack-dev-server --mode development --open",
     "watch": "webpack --mode development --watch",
+    "build": "cross-env NODE_ENV=production webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -40,6 +41,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.2.2",
+    "cross-env": "^7.0.3",
     "lodash": "^4.17.21",
     "normalize.css": "^8.0.1"
   }
