@@ -1,5 +1,5 @@
-import Editor from '@models/Editor'
+import Editor from '@/services/Editor'
 import './styles/scss.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-const editor = new Editor()
+new Editor()
